@@ -1,0 +1,19 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#map{
+  width: 100%;
+  height: 100%;
+}
+.mapboxgl-marker{
+background-image: url('http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png');
+background-size: cover;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+cursor: pointer;
+}

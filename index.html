@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bike Share: Starter Files</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+      // REPLACE THE EMPTY ACCESS TOKEN WITH YOUR OWN TOKEN FROM MAP BOX
+      mapboxgl.accessToken = 'pk.eyJ1Ijoia2h5YXRpLXNoYWgiLCJhIjoiY2o5ZzI0bWdzMnRmdjJ4cW0wdW95OGE5aCJ9.j7hixjh-RM_SIXNHfmMZAQ';
+
+
+      // Set bounds to New York, New York
+
+      var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v9',
+          center: [-73.9978, 40.7209],
+          zoom: 12
+      });
+
+//Adding the markers
+
+
+     const url = "https://cdn.rawgit.com/mikefresh/cccb2b7571f6de2a4fd96c6271a1b8a3/raw/7b716366fc8fe27b9ecace1bbdcd4cf8d82980fd/citi.json"
+
+
+     axios(url).then(response => {
+
+        let stations = response.data.stationBeanList
+
+
+        for (station of stations){
+
+        let marker = new mapboxgl.Marker()
+             .setLngLat([station.longitude,station.latitude])
+             .addTo(map);
+
+        }
+      });
+
+
+
+
+    </script>
+  </body>
+</html>
